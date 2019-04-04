@@ -18,7 +18,7 @@ while True:
         cardid = reader.reader.readCard()
         try:
             # start the player script and pass on the cardid
-            if cardid != None && cardid != lastcardid:
+            if cardid != None and cardid != lastcardid:
                 lastcardid = cardid
                 subprocess.call([dir_path + '/rfid_trigger_play.sh --cardid=' + cardid], shell=True)
         except OSError as e:
