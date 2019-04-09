@@ -391,7 +391,7 @@ sudo apt-get --yes --force-yes install apt-transport-https samba samba-common-bi
 
 # Get github code
 cd /home/pi/
-git clone https://github.com/DominikHerold/RPi-Jukebox-RFID.git
+git clone https://github.com/DominikHerold/RPi-Jukebox-RFID.git --branch domies
 # the following three lines are needed as long as this is not the master branch:
 cd RPi-Jukebox-RFID
 git fetch
