@@ -169,14 +169,6 @@ void setup()
   Serial.begin(9600);
   
   Serial.printf("Connecting to %s ", ssid);
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED)
-  {
-	  delay(500);
-	  Serial.print(".");
-  }
-  
-  Serial.println(" connected");
   
   matrix.setIntensity(brightness); 
 
@@ -184,6 +176,21 @@ void setup()
   matrix.setRotation(1, 1);        
   matrix.setRotation(2, 1);        
   matrix.setRotation(3, 1);
+  
+  WiFi.begin(ssid, password);
+  int retry_count = 0;
+  while ((WiFi.status() != WL_CONNECTED) && (retry_count < 20))
+  {
+	  show();
+	  Serial.print(".");
+	  retry_count++;
+  }
+  
+  if (retry_count == 20){
+	  ESP.restart();
+  }
+  
+  Serial.println(" connected");
   
   show();
 }
