@@ -88,6 +88,7 @@ int playsNow(){
 		client.stop();
 		Ticker = "booting ";
 		show();
+		isPlaying = 2;
 	}
 	
 	return isPlaying;
@@ -140,7 +141,9 @@ void sendData(){
 	else{
 		Serial.println("connection failed!]");
 		client.stop();
-		delay (5000);
+		if (playsNowTemp != 2){
+			delay (5000);
+		}		
 	}
 }
 
