@@ -86,6 +86,8 @@ int playsNow(){
 	else{
 		Serial.println("connection failed!]");
 		client.stop();
+		Ticker = "booting ";
+		show();
 	}
 	
 	return isPlaying;
